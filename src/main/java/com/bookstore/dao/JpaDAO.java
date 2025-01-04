@@ -1,22 +1,82 @@
 package com.bookstore.dao;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
-public class JpaDAO<T> {
+import com.bookstore.entity.Users;
+
+public class JpaDAO<E>{
 	protected EntityManager entityManager;
+	
 
-	public JpaDAO(EntityManager entityManager) {
+  
+
+    public JpaDAO(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
 	}
-	
-	public T create(T t) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(t);
-		entityManager.flush();
-		entityManager.refresh(t);
-		entityManager.getTransaction().commit();
-		return t;
+
+	public E create(E entity){
+    	
+        entityManager.getTransaction().begin();
+
+
+        entityManager.persist(entity);
+        entityManager.flush();
+        entityManager.refresh(entity);
+
+
+        entityManager.getTransaction().commit();
+        
+        return entity;
+    }
+    
+    public E update(E entity) {
+    	
+    
+    	
+		return null;
 	}
-	
+    
+    public E find(Class<E> type, Object id) {
+
+    	
+		return null;
+	}
+    
+    public void delete(Class<E> type, Object id) {
+
+    	
+    	
+    	
+	}
+
+	public List<Users> findWithNamedQuery(String queryName) {
+		Query query=entityManager.createNamedQuery(queryName);
+		return query.getResultList();
+	}
+
+	public long countWithNamedQuery(String queryName) {
+		Query query=entityManager.createNamedQuery(queryName);
+		return (long) query.getSingleResult();
+	}
+    
+   
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
