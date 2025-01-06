@@ -32,20 +32,9 @@ public class ListUsersServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		UserServices userServices=new UserServices();
-		List<Users> listUsers=userServices.listUser();
-		request.setAttribute("listUsers", listUsers);
-		String listPage="user_list.jsp";
-		RequestDispatcher requestDispatcher=request.getRequestDispatcher(listPage);
-		try {
-			requestDispatcher.forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		UserServices userServices=new UserServices(request,response);
+		userServices.listUser();
+
 	}
 
 }
