@@ -37,16 +37,23 @@ public class JpaDAO<E>{
     }
     
     public E update(E entity) {
-    	
+		entityManager.getTransaction().begin();
+		entity = entityManager.merge(entity);
+		entityManager.getTransaction().commit();
+		return entity;
     
     	
-		return null;
 	}
     
     public E find(Class<E> type, Object id) {
-
+    	entityManager.getTransaction().begin();
+		E entity = entityManager.find(type, id);
+		if (entity != null) {
+			entityManager.refresh(entity);
+		}
+		entityManager.getTransaction().commit();
+		return entity;
     	
-		return null;
 	}
     
     public void delete(Class<E> type, Object id) {
