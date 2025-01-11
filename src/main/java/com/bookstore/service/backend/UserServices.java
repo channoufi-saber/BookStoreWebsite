@@ -99,6 +99,13 @@ public class UserServices {
 		}
 		
 	}
+
+	public void deleteUser() {
+		int userId=Integer.parseInt(request.getParameter("id"));
+		userDAO.delete(userId);
+		String message="User has been deleted successfully";
+		listUser(message);
+	}
 	
 	
 	
