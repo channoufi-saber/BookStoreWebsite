@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin.users;
+package com.bookstore.controller.admin.categories;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,26 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.controller.BaseServlet;import com.bookstore.service.backend.UserServices;
+import com.bookstore.service.backend.CategoryServices;
 
 /**
- * Servlet implementation class DeleteUserServlet
+ * Servlet implementation class DeleteCategoryServlet
  */
-@WebServlet("/admin/delete_user")
-public class DeleteUserServlet extends BaseServlet {
+@WebServlet("/admin/delete_category")
+public class DeleteCategoryServlet extends com.bookstore.controller.BaseServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public DeleteUserServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DeleteCategoryServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices=new UserServices(entityManager, request, response);
-		userServices.deleteUser();
+		CategoryServices categoryServices=new CategoryServices(entityManager, request, response);
+		categoryServices.deleteCategory();
 	}
 
 }

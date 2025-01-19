@@ -66,7 +66,7 @@ public class JpaDAO<E>{
     	
 	}
 
-	public List<Users> findWithNamedQuery(String queryName) {
+	public List<E> findWithNamedQuery(String queryName) {
 		Query query=entityManager.createNamedQuery(queryName);
 		return query.getResultList();
 	}

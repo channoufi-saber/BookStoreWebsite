@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin.users;
+package com.bookstore.controller.admin.categories;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,29 +7,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.controller.BaseServlet;import com.bookstore.service.backend.UserServices;
+import com.bookstore.service.backend.CategoryServices;
 
 /**
- * Servlet implementation class UpdateUserServlet
+ * Servlet implementation class CreateCategoryServlet
  */
-@WebServlet("/admin/update_user")
-public class UpdateUserServlet extends BaseServlet {
+@WebServlet("/admin/create_category")
+public class CreateCategoryServlet extends com.bookstore.controller.BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateUserServlet() {
+    public CreateCategoryServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices=new UserServices(entityManager, request, response);
-		userServices.updateUser();
+		CategoryServices categoryServices=new CategoryServices(entityManager, request, response);
+		categoryServices.createCategory();
 	}
 
 }
