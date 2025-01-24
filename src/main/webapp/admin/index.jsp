@@ -6,16 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Evergreen Bookstore Administration</title>
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
 	<div align="center">
-		<h2>Administrative Dashboard</h2>
+		<h1 class="pageheading">Administrative Dashboard</h1>
 	</div>
 	
 	<div align="center">
 	<hr width="60%">
-		<h2>Quick Actions:</h2>
+		<h1 class="pageheading">Quick Actions:</h1>
 		<b>
 			<a href="create_book">New Book</a> &nbsp;
 			<a href="create_user">New User</a> &nbsp;
