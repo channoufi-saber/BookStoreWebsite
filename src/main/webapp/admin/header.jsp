@@ -5,7 +5,7 @@
 		<img src="../images/BookstoreAdminLogo.png">
 	</div>
 	<div>
-		Welcome, Admin | <a href="logout">Logout</a> <br> <br>
+		Welcome, <c:out value="${sessionScope.useremail }"></c:out> | <a href="logout">Logout</a> <br> <br>
 	</div>
 	<div id="headermenu">
 		<div>
