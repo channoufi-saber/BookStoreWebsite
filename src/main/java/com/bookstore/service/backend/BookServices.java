@@ -184,6 +184,23 @@ public class BookServices {
 		requestDispatcher.forward(request, response);
 		
 	}
+
+	public void search() throws ServletException, IOException {
+		String Keyword=request.getParameter("Keyword");
+		List<Book> result=null;
+		if (Keyword.equals("")) {
+			result=bookDAO.listAll();
+		} else {
+			result=bookDAO.search(Keyword);
+		}
+		request.setAttribute("result", result);
+		request.setAttribute("Keyword", Keyword);
+		
+		String resultPage="frontend/search_result.jsp";
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher(resultPage);
+		requestDispatcher.forward(request, response);
+		
+	}
 	
 	
 	
