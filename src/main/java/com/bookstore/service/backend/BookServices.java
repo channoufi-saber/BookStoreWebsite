@@ -28,12 +28,11 @@ public class BookServices {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
-	public BookServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
+	public BookServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request=request;
 		this.response=response;
-		this.entityManager=entityManager;
-		bookDAO=new BookDAO(entityManager);
-		categoryDAO=new CategoryDAO(entityManager);
+		bookDAO=new BookDAO();
+		categoryDAO=new CategoryDAO();
 	}
 	
 	public void listBooks(String message) throws ServletException, IOException {
@@ -137,7 +136,7 @@ public class BookServices {
 		Book existBook=bookDAO.get(bookId);
 		Book bookByTitle =bookDAO.findByTitle(title);
 		
-		if (!existBook.equals(bookByTitle)) {
+		if (bookByTitle != null && !existBook.equals(bookByTitle)) {
 			String message="Could not update book because the book with the title "+title+" already exists.";
 			listBooks(message);
 			return;
@@ -161,9 +160,7 @@ public class BookServices {
 		int categoryId=Integer.parseInt(request.getParameter("id"));
 		List<Book> listBooks=bookDAO.listByCtaegory(categoryId);
 		Category category=categoryDAO.get(categoryId);
-		List<Category> listCategory=categoryDAO.listAll();
-		
-		request.setAttribute("listCategory", listCategory);
+
 		request.setAttribute("listBooks", listBooks);
 		request.setAttribute("category", category);
 		String listPage="frontend/books_list_by_category.jsp";
@@ -175,8 +172,7 @@ public class BookServices {
 	public void viewBookDetail() throws ServletException, IOException {
 		Integer bookId=Integer.parseInt(request.getParameter("id"));
 		Book book=bookDAO.get(bookId);
-		List<Category> listCategory=categoryDAO.listAll();
-		request.setAttribute("listCategory", listCategory);
+
 		request.setAttribute("book", book);
 		
 		String detailPage="frontend/book_detail.jsp";

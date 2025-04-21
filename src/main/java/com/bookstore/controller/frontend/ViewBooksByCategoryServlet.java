@@ -14,7 +14,7 @@ import com.bookstore.service.backend.BookServices;
  * Servlet implementation class ViewBooksByCategoryServlet
  */
 @WebServlet("/view_category")
-public class ViewBooksByCategoryServlet extends BaseServlet {
+public class ViewBooksByCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -29,7 +29,7 @@ public class ViewBooksByCategoryServlet extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookServices bookServices=new BookServices(entityManager, request, response);
+		BookServices bookServices=new BookServices( request, response);
 		bookServices.listBooksByCategory();
 	}
 

@@ -29,7 +29,8 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "book", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
 @NamedQueries({ @NamedQuery(name = "Book.findAll", query = "SELECT c FROM Book c"),
 		@NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
-		@NamedQuery(name = "Book.countAll", query = "SELECT COUNT(*) FROM Book b"),
+		@NamedQuery(name = "Book.countAll", query = "SELECT Count(b) FROM Book b"),
+		@NamedQuery(name = "Book.countByCategory", query = "SELECT COUNT(*) FROM Book b WHERE b.category.categoryId =:catId"),
 		@NamedQuery(name = "Book.findByCategory", query = "SELECT b FROM Book b JOIN Category c ON b.category.categoryId=c.categoryId AND c.categoryId = :catId"),
 		@NamedQuery(name = "Book.listNew", query = "SELECT c FROM Book c ORDER BY c.publishDate DESC"),
 		@NamedQuery(name = "Book.search", query = "SELECT b FROM Book b WHERE b.title LIKE '%' || :Keyword || '%' OR b.author LIKE '%' || :Keyword || '%' OR b.description LIKE '%' || :Keyword || '%'")

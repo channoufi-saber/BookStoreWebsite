@@ -13,9 +13,14 @@
 <title>Create New Book</title>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/jquery-ui.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/richtext.min.css">
+
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.richtext.min.js"></script>
+
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -30,7 +35,7 @@
 		</h1>
 	</div>
 
-	<div align="center">
+	<div class="center">
 		<c:if test="${book != null}">
 			<form action="update_book" method="post" id="bookForm"
 				enctype="multipart/form-data">
@@ -40,7 +45,9 @@
 			<form action="create_book" method="post" id="bookForm"
 				enctype="multipart/form-data">
 		</c:if>
-		<table class="form">
+		<table class="form" style="width: 80%;
+	border: 0;
+	margin: 0 auto;">
 			<tr>
 				<td>Category:</td>
 				<td><select name="category">
@@ -117,6 +124,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#publishDate').datepicker();
+		$('#description').richText();
 		$('#bookImage').change(function() {
 			showImageThumbnail(this);
 		});

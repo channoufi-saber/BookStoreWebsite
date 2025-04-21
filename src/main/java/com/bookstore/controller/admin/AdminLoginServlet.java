@@ -14,7 +14,7 @@ import com.bookstore.service.backend.UserServices;
  * Servlet implementation class AdminLoginServlet
  */
 @WebServlet("/admin/login")
-public class AdminLoginServlet extends BaseServlet {
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -30,7 +30,7 @@ public class AdminLoginServlet extends BaseServlet {
 		// TODO Auto-generated method stub
 		
 		
-		UserServices userServices=new UserServices(entityManager, request, response);
+		UserServices userServices=new UserServices( request, response);
 		userServices.login();
 	}
 

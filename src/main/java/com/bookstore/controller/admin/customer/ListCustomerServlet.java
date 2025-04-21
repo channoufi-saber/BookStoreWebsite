@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin.users;
+package com.bookstore.controller.admin.customer;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,26 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.controller.BaseServlet;import com.bookstore.service.backend.UserServices;
+import com.bookstore.service.backend.CustomerServices;
 
 /**
- * Servlet implementation class EditUserServlet
+ * Servlet implementation class ListCustomerServlet
  */
-@WebServlet("/admin/edit_user")
-public class EditUserServlet extends HttpServlet {
+@WebServlet("/admin/list_customer")
+public class ListCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditUserServlet() {
+    public ListCustomerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices=new UserServices( request, response);
-		userServices.editUser();
+		CustomerServices customerServices=new CustomerServices(request, response);
+		customerServices.listCustomers();
 	}
 
 }

@@ -20,7 +20,7 @@ import com.bookstore.service.backend.BookServices;
 		maxFileSize = 1024*300,
 		maxRequestSize = 1024*1024
 	)
-public class DeleteBookServlet extends BaseServlet {
+public class DeleteBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -35,7 +35,7 @@ public class DeleteBookServlet extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookServices bookServices=new BookServices(entityManager, request, response);
+		BookServices bookServices=new BookServices( request, response);
 		bookServices.deleteBook();
 	}
 
