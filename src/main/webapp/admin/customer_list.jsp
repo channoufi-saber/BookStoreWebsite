@@ -18,7 +18,7 @@
 	<div align="center">
 		<h1 class="pageheading">Customers Management</h1>
 		<h3>
-			<a href="new_customer">Create New customer</a>
+			<a href="customer_form.jsp">Create New customer</a>
 		</h3>
 	</div>
 	<c:if test="${message != null}">
