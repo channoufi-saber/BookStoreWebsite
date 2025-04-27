@@ -68,6 +68,58 @@ public class CustomerServices {
 			listCustomers(message);
 		}
 	}
+
+	public void editCustomer() throws ServletException, IOException {
+
+		Integer customerId=Integer.parseInt(request.getParameter("id"));
+		Customer customer=customerDAO.get(customerId);
+		request.setAttribute("customer", customer);
+		String editPage="customer_form.jsp";
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+	}
+
+	public void updateCustomer() throws ServletException, IOException {
+		Integer customerId=Integer.parseInt(request.getParameter("customerId"));
+		String email=request.getParameter("email");
+		Customer existCustomer=customerDAO.findByEmail(email);
+		String message=null;
+		if (existCustomer != null && existCustomer.getCustomerId() != customerId) {
+			 message="Could not update the customer ID "+customerId+" because there's existing customer having the same email.";
+		}else {
+			String fullname=request.getParameter("fullname");
+			String password=request.getParameter("password");
+			String phone=request.getParameter("phone");
+			String address=request.getParameter("address");
+			String city=request.getParameter("city");
+			String zipcode=request.getParameter("zipcode");
+			String country=request.getParameter("country");
+			
+			Customer newCustomer=customerDAO.get(customerId);
+			newCustomer.setCustomerId(customerId);
+			newCustomer.setEmail(email);
+			newCustomer.setFullname(fullname);
+			newCustomer.setPassword(password);
+			newCustomer.setPhone(phone);
+			newCustomer.setAddress(address);
+			newCustomer.setCity(city);
+			newCustomer.setZipcode(zipcode);
+			newCustomer.setCountry(country);
+			customerDAO.update(newCustomer);
+			
+			 message="The customer has been updated successfully.";
+		}
+		listCustomers(message);
+		
+	}
+
+	public void deleteCustomer() throws ServletException, IOException {
+
+		Integer customerId=Integer.parseInt(request.getParameter("id"));
+		customerDAO.delete(customerId);
+		String message="The customer has been deleted successfully.";
+		listCustomers(message);
+	}
 	
 	
 }
