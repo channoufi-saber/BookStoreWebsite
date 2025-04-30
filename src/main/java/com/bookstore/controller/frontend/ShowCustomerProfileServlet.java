@@ -1,4 +1,4 @@
-package com.bookstore.controller.frontend.book;
+package com.bookstore.controller.frontend;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.controller.BaseServlet;
-import com.bookstore.service.backend.BookServices;
+import com.bookstore.service.backend.CustomerServices;
 
 /**
- * Servlet implementation class ViewBookServlet
+ * Servlet implementation class ShowCustomerProfileServlet
  */
-@WebServlet("/view_book")
-public class ViewBookServlet extends HttpServlet {
+@WebServlet("/view_profile")
+public class ShowCustomerProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewBookServlet() {
+    public ShowCustomerProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +28,8 @@ public class ViewBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookServices bookServices=new BookServices( request, response);
-		bookServices.viewBookDetail();
+		CustomerServices customerServices=new CustomerServices(request, response);
+		customerServices.showCustomerProfile();
 	}
 
 }
