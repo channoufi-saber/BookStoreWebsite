@@ -15,7 +15,7 @@
 <body>
 	<jsp:directive.include file="header.jsp" />
 	<div align="center">
-		<h1>Customer Login::</h1>
+		<h1>Customer Login:</h1>
 			<c:if test="${message != null}">
 		<div align="center">
 			<h4 class="message">
