@@ -31,7 +31,7 @@
 			</a>
 		</div>
 		<div>
-			<a href="reviews"> <img alt="" src="../images/review.png"></br>
+			<a href="list_review"> <img alt="" src="../images/review.png"></br>
 				Reviews
 			</a>
 		</div>
