@@ -19,7 +19,7 @@
 
 	<div align="center" style="width: 80%; margin: 0 auto;">
 		<c:forEach items="${listBooks }" var="book">
-			<div style="float:left; display: inline-block; margin: 20px">
+			<div style="float: left; display: inline-block; margin: 20px">
 				<div>
 					<a href="view_book?id=${book.bookId }"> <img alt=""
 						src="data:image/jpg;base64,${book.base64Image }" width="128"
@@ -30,7 +30,9 @@
 					<a href="view_book?id=${book.bookId }"> <b>${book.title}</b>
 					</a>
 				</div>
-				<div>Rating *****</div>
+				<div>
+					<jsp:directive.include file="book_rating.jsp" />
+				</div>
 				<div>
 					by <i>${book.author}</i>
 				</div>
