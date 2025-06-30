@@ -10,6 +10,9 @@
 <title>${book.title}-Online Books Store</title>
 <link rel="stylesheet" href="css/style.css">
 
+<script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+
+
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -46,7 +49,7 @@
 						<a id="reviews">Customer Reviews</a>
 					</h2></td>
 				<td colspan="2">
-					<button>Write a Customer Review</button>
+					<button id="buttonWriteReview">Write a Customer Review</button>
 				</td>
 			</tr>
 			<tr>
@@ -85,6 +88,13 @@
 	<br>
 
 	<jsp:directive.include file="footer.jsp" />
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#buttonWriteReview").click(function(){
+				window.location='write_review?book_id='+${book.bookId}
+			});
+		})
+	</script>
 
 </body>
 </html>
