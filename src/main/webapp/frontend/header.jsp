@@ -13,8 +13,9 @@
 			
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<c:if test="${loggedCustomer == null }">
-			<a href="login">Sign In</a> | <a
-			href="register">Register</a> | 
+			<a href="login">Sign In</a> | 
+			<a href="register">Register</a> | 
+			<a href="view_cart">Cart</a> | 
 			</c:if>
 			<c:if test="${loggedCustomer != null }">
 			<a href="view_profile">Welcome, ${loggedCustomer.fullname }</a> |
